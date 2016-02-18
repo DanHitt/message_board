@@ -1,0 +1,12 @@
+<div class="facebookLook col-md-5" style="padding:20px;">
+	
+		Create a new Message:  
+		<form action="/post_view/" method="post">{% csrf_token %}
+			<input type='text' name='message_body' placeholder="Message" />
+	
+			<input type='hidden' value='{{ title }}' name='title' />
+			<input type='hidden' value='{{ user }}' name='user' />
+	
+			<input type="submit" value="Create" />
+		</form>
+</div>

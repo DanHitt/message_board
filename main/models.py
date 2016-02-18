@@ -17,4 +17,4 @@ class Comment(models.Model):
 	message = models.ForeignKey(Message)
 
 	def __unicode__(self):
-		return str(self.user)
+		return self.body

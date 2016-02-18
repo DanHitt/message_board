@@ -1,30 +1,68 @@
 {% load staticfiles %}
 <!DOCTYPE HTML>
-<!--
-	Retrospect by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
+
 <html>
 	<head>
 		<title>Message Board by Dan Hitt</title>
 		<meta charset="utf-8" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+		<link rel="stylesheet" type="html/css" href=" {% static 'board.css' %}" />
 
 
 	</head>
 
 
 	<body>
-		<table>
-			{% for message in messages %}
-				<tr>
-					{{ message.user }}
-					{{ message.body }}
+	<div class="container">
 
-				</tr>
-				{% for comment in comments %}
-					{{ comment }}
+
+		{% if user.is_authenticated %}
+			<p>
+			Welcome, {{ user.username }}.  
+
+			<div class="row">
+				{% include "post.html" %}
+
+			</div>
+			</p>
+			<div class="row facebookLook col-md-5">
+				<table id="messageTable">
+				{% for message in messages %}
+					<tr>
+				
+					</tr>
+					<tr>
+
+						<td class="cell spacer facebookBox"><h4><span class="facebookUser">{{ message.user }}:</span><span class="facebookMessage">{{ message.body }}</span></h4></td>
+					</tr>
+
+					<tr> 
+					{% for comment in comments %}
+						{% if comment.message == message %}
+							<td><span class="facebookCommentUser">{{ comment.user }}:</span><span class="facebookComment">{{ comment }}</span> </td>
+						{% endif %}
+					{% endfor %}
+					</tr>
 				{% endfor %}
-			{% endfor %}
-		</table>
+				</table>
+			</div>
+			<div class="row clear">
+				{{ user.username }},
+				<a href="{% url 'accounts:password_change' %}">[Change Password]</a>
+				<a href="{% url 'accounts:logout' %}">[logout]</a>
+			</div>
+
+		{% else %}
+			<p>Welcome, Guest <a href="{% url 'accounts:login' %}">[login]</a> Please login to view messages.</p>
+		{% endif %}
+
+		{% block loginErrors %}
+		{% endblock %}
+
+
+	</div>
 	</body>

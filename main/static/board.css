@@ -1,0 +1,69 @@
+#messageTable {
+	margin: 40px;
+	border-radius: 25px;
+
+
+}
+#messageTable td {
+
+}
+
+#messageTable tr > td {
+	padding: 10px;
+	background-color: #ccd9ff;
+}
+
+.cell {
+
+
+}
+
+.facebookLook {
+	background-color:#809fff;
+	border-radius: 25px;
+
+}
+.facebookUser {
+	/*background-color: #809fff;*/
+	font-size: 1.2em;
+	color: blue;
+}
+
+.facebookMessage {
+	padding-left: 10px;
+	color:black;
+
+
+}
+
+.facebookComment {
+	
+	font-size: .8em;
+
+
+}
+.facebookCommentUser {
+
+	padding-left:140px;
+	font-size: .9em;
+	color: blue;
+}
+
+.facebookBox {
+	background-color: #e6ecff;
+	border-style: solid hidden hidden hidden;
+	border-color: #809fff;
+	margin-top: 20px;
+
+
+}
+
+.spacer {
+	margin: 100px;
+
+}
+
+.clear {
+	padding: 40px 0 0 20px;
+	clear: both;
+}
